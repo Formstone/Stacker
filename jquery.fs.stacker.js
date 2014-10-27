@@ -23,7 +23,8 @@
 	 */
 	var options = {
 		callback: $.noop,
-		customClass: ""
+		customClass: "",
+		preserveClasses: false
 	};
 
 	var pub = {
@@ -96,7 +97,7 @@
 			
 			// Create new table
 			var $stackerTable,
-				tableContent = '';
+			    tableContent = '';
 				
 			tableContent += '<table ';
 			
@@ -109,7 +110,11 @@
 			
 			// Preserve Caption
 			if ($tableCaption.length) {
-				tableContent += '<caption>' + $tableCaption.html() + '</caption>';
+				tableContent += '<caption';
+				if (opts.preserveClasses) {
+					tableContent += ' class="'+ $tableCaption.attr("class") +'"';
+				}
+				tableContent += '>' + $tableCaption.html() + '</caption>';
 			}
 			
 			tableContent += '<tbody>';
@@ -118,7 +123,7 @@
 			for (var i = 0, rowCount = $tableRows.length; i < rowCount; i++) {
 				
 				var $row        = $tableRows.eq(i),
-					$rowColumns = $row.find("td");
+				    $rowColumns = $row.find("td");
 				
 				tableContent += '<tr><td><table>';
 				
@@ -147,7 +152,7 @@
 			
 			// Modify DOM
 			$table.addClass("stacker stacker-original")
-				  .after(tableContent);
+			      .after(tableContent);
 		}
 	}
 

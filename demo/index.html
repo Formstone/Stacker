@@ -41,7 +41,8 @@
 			$(document).ready(function() {
 				
 				$(".demo table").stacker({
-					"customClass": "my_stacker_table"
+					customClass: "my_stacker_table",
+					preserveClasses: true
 				});
 			});
 		</script>
@@ -78,7 +79,7 @@
 				
 				<table id="demo_table">
 					
-					<caption>Directory</caption>
+					<caption class="table-caption">Directory</caption>
 					
 					<thead>
 						<th>Name</th>
