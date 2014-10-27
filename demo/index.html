@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<title>Stacker Demo</title>
+
+		<!-- Modernizer -->
+		<script src="http://formstone.it/js/modernizr.js"></script>
+
+		<!-- Demo Resources -->
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all">
+		<script src="http://formstone.it/js/demo.js"></script>
+
+		<!--[if IE 8]>
+        	<script>var IE8 = true;</script>
+        	<script src="http://formstone.it/js/site.ie8.js"></script>
+			<link rel="stylesheet" href="http://formstone.it/css/demo.ie8.css">
+		<![endif]-->
+		<!--[if IE 9]>
+        	<script>var IE9 = true;</script>
+        	<script src="http://formstone.it/js/site.ie9.js"></script>
+		<![endif]-->
+
+		<link href="../jquery.fs.stacker.css" rel="stylesheet" type="text/css" media="all">
+		<script src="../jquery.fs.stacker.js"></script>
+
+		<!--[DEMO:START-RESOURCES]-->
+
+		<link href="http://formstone.it/components/Scroller/jquery.fs.scroller.css" rel="stylesheet" type="text/css" media="all">
+		<script src="http://formstone.it/components/Scroller/jquery.fs.scroller.js"></script>
+
+		<style>
+			.demo { }
+			
+			.demo table caption { font-size: 18px; font-weight: 600; padding: 20px; text-transform: uppercase; }
+		</style>
+
+		<script>
+			$(document).ready(function() {
+				
+				$(".demo table").stacker({
+					"customClass": "my_stacker_table"
+				});
+			});
+		</script>
+
+		<!--[DEMO:END-RESOURCES]-->
+
+	</head>
+	<body class="gridlock demo">
+		<header id="header">
+			<div class="row">
+				<div class="all-full">
+					<a href="http://formstone.it/" class="branding">Formstone</a>
+				</div>
+			</div>
+		</header>
+		<article class="row page">
+			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+				<header class="header">
+					<h1>Stacker Demo</h1>
+					<!-- <p>A technical demonstration of the jQuery plugin.</p> -->
+					<br>
+					<a href="http://formstone.it/selecter/" class="button">View Documentation</a>
+				</header>
+
+				<!--[DEMO:START-CONTENT]-->
+
+				<!-- BASIC -->
+				<h2>Basic</h2>
+				<p>The most basic method is simply applying the Stacker plugin:</p>
+
+				<pre class="example"><code class="language-javascript">$("table").stacker();</code></pre>
+
+				<h5>Demo</h5>
+				
+				<table id="demo_table">
+					
+					<caption>Directory</caption>
+					
+					<thead>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Phone Number</th>
+						<th>Date</th>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>Neil Murphy</td>
+							<td>lincoln.jame@wetwheel.com</td>
+							<td>48 E Bells Blvd</td>
+							<td>178-286-3050</td>
+							<td>2003-11-22</td>
+						</tr>
+						<tr>
+							<td>Amelia Perkins</td>
+							<td>tawana@send.org</td>
+							<td>14 N Pinecrest Dr</td>
+							<td>640-766-0373</td>
+							<td>2005-01-12</td>
+						</tr>
+						<tr>
+							<td>Leila Kirkland</td>
+							<td>young.christian@outoven.org</td>
+							<td>264 I- 10D Bus</td>
+							<td>585-229-1182</td>
+							<td>2011-12-27</td>
+						</tr>
+						<tr>
+							<td>Roxanne Lott</td>
+							<td>araceli.katelyn@opposite.info</td>
+							<td>2883 N Standard St</td>
+							<td>816-867-6797</td>
+							<td>2013-07-14</td>
+						</tr>
+						<tr>
+							<td>Lenore Garrison</td>
+							<td>sandra.donna.carol@grey.me</td>
+							<td>9956 Sidney Baker St S</td>
+							<td>569-903-0437</td>
+							<td>2013-07-27</td>
+						</tr>
+						<tr>
+							<td>Josephine Duncan</td>
+							<td>garfield.sol@readingready.edu</td>
+							<td>90 Hwy 71 Bus</td>
+							<td>134-665-9692</td>
+							<td>2010-06-23</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<br>
+
+				<!--[DEMO:END-CONTENT]-->
+
+			</div>
+		</article>
+
+		<footer id="footer" class="row">
+			<div class="all-full copyright">
+				Made with &hearts; in Hampden
+			</div>
+		</footer>
+	</body>
+</html>

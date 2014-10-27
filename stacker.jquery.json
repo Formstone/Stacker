@@ -1,0 +1,33 @@
+{
+  "name": "stacker",
+  "version": "0.0.1",
+  "title": "Stacker",
+  "author": {
+    "name": "Matt Hisamoto",
+    "email": "mwhisamoto@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "description": "A jQuery plugin for responsive tables that retain column headers. Part of the Formstone Library.",
+  "keywords": [
+    "select",
+    "input",
+    "form",
+    "ui",
+    "javascript",
+    "jquery",
+    "formstone"
+  ],
+  "docs": "http://formstone.it/selecter/",
+  "demo": "http://formstone.it/selecter/",
+  "download": "https://github.com/Formstone/Stacker",
+  "bugs": "https://github.com/Formstone/Stacker/issues",
+  "homepage": "http://formstone.it/selecter/"
+}
