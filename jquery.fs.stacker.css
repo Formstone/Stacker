@@ -39,6 +39,10 @@
 .stacker.stacker-table table td:last-child {
   text-align: left;
 }
+.stacker.stacker-table table th:first-child:last-child,
+.stacker.stacker-table table td:first-child:last-child {
+  text-align: center;
+}
 .stacker.stacker-original {
   display: none;
 }

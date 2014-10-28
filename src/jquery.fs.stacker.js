@@ -110,10 +110,16 @@
 				$tableHeader = $table.find("thead"),
 				$tableHeaderLabels = $tableHeader.find("th"),
 				$tableHeaderColumns = false,
-				$tableRows = $table.find("tbody tr");
+				$tableRows = $table.find("tbody > tr"),
+				index = 0;
 			
-			// Look for <td> in <thead> if there are no <th>
-			if (!$tableHeaderLabels.length) {
+			
+			if (!$tableHeader.length) {
+				// If no <thead> look for first row
+				$tableHeaderLabels = $tableRows.eq(0).find("td");
+				index = 1;
+			} else if (!$tableHeaderLabels.length) {
+				// Look for <td> in <thead> if there are no <th>
 				$tableHeaderColumns = $tableHeader.find("td");
 				$tableHeaderLabels = $tableHeaderColumns;
 			}
@@ -133,8 +139,11 @@
 				tableContent += 'id="stacker-' + $table.attr("id") + '" ';
 			}
 			
-			tableContent += 'class="stacker stacker-table '+ opts.customClass;
-			if (opts.preserveClasses) {
+			tableContent += 'class="stacker stacker-table';
+			if (opts.customClass) {
+				tableContent += ' ' + opts.customClass;
+			}
+			if (opts.preserveClasses && $table.attr("class")) {
 				tableContent += ' '+ $table.attr("class");
 			}
 			tableContent += '">';
@@ -151,7 +160,7 @@
 			tableContent += '<tbody>';
 			
 			// Rows
-			for (var i = 0, rowCount = $tableRows.length; i < rowCount; i++) {
+			for (var i = index, rowCount = $tableRows.length; i < rowCount; i++) {
 				
 				var $row        = $tableRows.eq(i),
 				    $rowColumns = $row.find("td");
@@ -159,15 +168,32 @@
 				tableContent += '<tr><td><table>';
 				
 				// First row becomes table header
-				tableContent += '<thead><th';
-				if (opts.preserveClasses && $rowColumns.eq(0).attr("class")) {
-					tableContent += ' class="'+ $rowColumns.eq(0).attr("class") +'"';
+				tableContent += '<thead>';
+
+				// Check if label exists
+				var firstLabelExists = false;
+				if (labels[index] && labels[index] !== "") {
+					firstLabelExists = true;
 				}
-				tableContent += '>';
-				tableContent += labels[0];
-				tableContent += '</th><th';
-				if (opts.preserveClasses && $rowColumns.eq(0).attr("class")) {
-					tableContent += ' class="'+ $rowColumns.eq(0).attr("class") +'"';
+
+				// Draw label column if exists
+				if (firstLabelExists) {
+					tableContent += '<th';
+					if (opts.preserveClasses && $rowColumns.eq(index).attr("class")) {
+						tableContent += ' class="'+ $rowColumns.eq(index).attr("class") +'"';
+					}
+					tableContent += '>';
+					tableContent += labels[0];
+					tableContent += '</th>';
+				}
+				
+				// Draw row contents
+				tableContent += '<th';
+				if (!firstLabelExists) {
+					tableContent += ' colspan="2"';
+				}
+				if (opts.preserveClasses && $rowColumns.eq(index).attr("class")) {
+					tableContent += ' class="'+ $rowColumns.eq(index).attr("class") +'"';
 				}
 				tableContent += '>';
 				tableContent += $rowColumns.eq(0).html();
@@ -177,13 +203,29 @@
 				tableContent += '<tbody>';
 				
 				for (var j = 1, colCount = $rowColumns.length; j < colCount; j++) {
-					tableContent += '<tr><td';
-					if (opts.preserveClasses && $rowColumns.eq(j).attr("class")) {
-						tableContent += ' class="'+ $rowColumns.eq(j).attr("class") +'"';
+					tableContent += '<tr>';
+					
+					// Check if label exists
+					var labelExists = false;
+					if (labels[j] && labels[j] !== "") {
+						labelExists = true;
 					}
-					tableContent += '>';
-					tableContent += labels[j];
-					tableContent += '</td><td';
+					
+					// Draw label column if exists
+					if (labelExists) {
+						tableContent += '<td';
+						if (opts.preserveClasses && $rowColumns.eq(j).attr("class")) {
+							tableContent += ' class="'+ $rowColumns.eq(j).attr("class") +'"';
+						}
+						tableContent += '>';
+						tableContent += labels[j];
+						tableContent += '</td>';
+					}
+					
+					tableContent += '<td';
+					if (!labelExists) {
+						tableContent += ' colspan="2"';
+					}
 					if (opts.preserveClasses && $rowColumns.eq(j).attr("class")) {
 						tableContent += ' class="'+ $rowColumns.eq(j).attr("class") +'"';
 					}
