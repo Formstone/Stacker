@@ -24,6 +24,7 @@
 	var options = {
 		callback: $.noop,
 		customClass: "",
+		maxWidth: "740px",
 		preserveClasses: false
 	};
 
@@ -39,6 +40,40 @@
 		defaults: function(opts) {
 			options = $.extend(options, opts || {});
 			return $(this);
+		},
+		
+		/**
+		 * @method
+		 * @name disable
+		 * @description Disables instance
+		 * @example $(".target").naver("disable");
+		 */
+		disable: function() {
+			return $(this).each(function(i, table) {
+				var data = $(table).data("stacker");
+
+				if (data) {
+					data.$table.addClass("enabled");
+					data.$stackerTable.removeClass("enabled");
+				}
+			});
+		},
+
+		/**
+		 * @method
+		 * @name enable
+		 * @description Enables instance
+		 * @example $(".target").naver("enable");
+		 */
+		enable: function() {
+			return $(this).each(function(i, table) {
+				var data = $(table).data("stacker");
+
+				if (data) {
+					data.$table.removeClass("enabled");
+					data.$stackerTable.addClass("enabled");
+				}
+			});
 		}
 	};
 
@@ -167,12 +202,46 @@
 				
 				tableContent += '</tbody></table></td></tr>';
 			}
-			
 			tableContent += '</tbody></table>';
+			
+			$stackerTable = $(tableContent);
 			
 			// Modify DOM
 			$table.addClass("stacker stacker-original")
-			      .after(tableContent);
+			      .after($stackerTable);
+			
+			// Save data
+			var data = $.extend(true, {
+				$table: $table,
+				$stackerTable: $stackerTable
+			}, opts);
+			
+			data.$table.data("stacker", data);
+			
+			// Navtive MQ Support
+			if (window.matchMedia !== undefined) {
+				data.mediaQuery = window.matchMedia("(max-width:" + (data.maxWidth === Infinity ? "100000px" : data.maxWidth) + ")");
+				// Make sure we stay in context
+				data.mediaQuery.addListener(function() {
+					_onRespond.apply(data.$table);
+				});
+				_onRespond.apply(data.$table);
+			}
+		}
+	}
+	
+	/**
+	 * @method private
+	 * @name _onRespond
+	 * @description Handles media query match change
+	 */
+	function _onRespond() {
+		var data = $(this).data("stacker");
+
+		if (data.mediaQuery.matches) {
+			pub.enable.apply(data.$table);
+		} else {
+			pub.disable.apply(data.$table);
 		}
 	}
 

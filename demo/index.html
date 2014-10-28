@@ -40,10 +40,14 @@
 		<script>
 			$(document).ready(function() {
 				
-				$(".demo table").stacker({
+				$(".demo table").not("#demo_table_max_width").stacker({
 					customClass: "my_stacker_table",
 					preserveClasses: true
 				});
+				
+				$(".demo table#demo_table_max_width").stacker({
+					maxWidth: "980px"
+				})
 			});
 		</script>
 
@@ -78,6 +82,74 @@
 				<h5>Demo</h5>
 				
 				<table id="demo_table">
+					
+					<caption>Directory</caption>
+					
+					<thead>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Phone Number</th>
+						<th>Date</th>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td >Neil Murphy</td>
+							<td>lincoln.jame@wetwheel.com</td>
+							<td>48 E Bells Blvd</td>
+							<td>178-286-3050</td>
+							<td>2003-11-22</td>
+						</tr>
+						<tr>
+							<td>Amelia Perkins</td>
+							<td>tawana@send.org</td>
+							<td>14 N Pinecrest Dr</td>
+							<td>640-766-0373</td>
+							<td>2005-01-12</td>
+						</tr>
+						<tr>
+							<td>Leila Kirkland</td>
+							<td>young.christian@outoven.org</td>
+							<td>264 I- 10D Bus</td>
+							<td>585-229-1182</td>
+							<td>2011-12-27</td>
+						</tr>
+						<tr>
+							<td>Roxanne Lott</td>
+							<td>araceli.katelyn@opposite.info</td>
+							<td>2883 N Standard St</td>
+							<td>816-867-6797</td>
+							<td>2013-07-14</td>
+						</tr>
+						<tr>
+							<td>Lenore Garrison</td>
+							<td>sandra.donna.carol@grey.me</td>
+							<td>9956 Sidney Baker St S</td>
+							<td>569-903-0437</td>
+							<td>2013-07-27</td>
+						</tr>
+						<tr>
+							<td>Josephine Duncan</td>
+							<td>garfield.sol@readingready.edu</td>
+							<td>90 Hwy 71 Bus</td>
+							<td>134-665-9692</td>
+							<td>2010-06-23</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<br>
+				
+				<!-- Max Width -->
+				<h2>Max-Width</h2>
+				<p>You can change the default max-width at which the stacked table will appear:</p>
+
+				<pre class="example"><code class="language-javascript">$("table").stacker({maxWidth: "980px"});</code></pre>
+
+				<h5>Demo</h5>
+				
+				<table id="demo_table_max_width">
 					
 					<caption>Directory</caption>
 					

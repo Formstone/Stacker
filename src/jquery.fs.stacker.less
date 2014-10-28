@@ -3,6 +3,10 @@
 	&.stacker-table {
 		display: none;
 		
+		&.enabled {
+			display: table;
+		}
+		
 		&,
 		& table {
 			width: 100%;
@@ -56,15 +60,13 @@
 				text-align: left;
 			}
 		}
-		
-		@media screen and (max-width: 740px) {
-			display: table;
-		}
 	}
 	
-	@media screen and (max-width: 739px) {
-		&.stacker-original {
-			display: none;
+	&.stacker-original {
+		display: none;
+		
+		&.enabled {
+			display: table;
 		}
 	}
 }

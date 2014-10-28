@@ -9,6 +9,9 @@
 .stacker.stacker-table {
   display: none;
 }
+.stacker.stacker-table.enabled {
+  display: table;
+}
 .stacker.stacker-table,
 .stacker.stacker-table table {
   width: 100%;
@@ -53,13 +56,9 @@
 .stacker.stacker-table table td:last-child {
   text-align: left;
 }
-@media screen and (max-width: 740px) {
-  .stacker.stacker-table {
-    display: table;
-  }
+.stacker.stacker-original {
+  display: none;
 }
-@media screen and (max-width: 739px) {
-  .stacker.stacker-original {
-    display: none;
-  }
+.stacker.stacker-original.enabled {
+  display: table;
 }
