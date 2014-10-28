@@ -32,9 +32,26 @@
 		<script src="http://formstone.it/components/Scroller/jquery.fs.scroller.js"></script>
 
 		<style>
-			.demo { }
-			
 			.demo table caption { font-size: 18px; font-weight: 600; padding: 20px; text-transform: uppercase; }
+	
+			.stacker.stacker-table table {
+				border-bottom: 1px solid #bbb;
+			}
+			.stacker.stacker-table table th {
+				background: #e8e8e8;
+				color: #555;
+				font-size: 1em;
+				font-weight: 700;
+				letter-spacing: normal;
+				text-transform: none;
+			}
+			.stacker.stacker-table table tbody tr:nth-child(odd) td {
+				background: transparent;
+			}
+			.stacker.stacker-table table tbody tr:nth-child(even) td {
+				background: #f8f8f8;
+			}
+			
 		</style>
 
 		<script>

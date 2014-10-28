@@ -26,27 +26,10 @@
   padding: 0;
   margin: 0;
 }
-.stacker.stacker-table table {
-  border-bottom: 1px solid #bbb;
-}
 .stacker.stacker-table table tr,
 .stacker.stacker-table table th,
 .stacker.stacker-table table td {
   padding: 1em;
-}
-.stacker.stacker-table table th {
-  background: #e8e8e8;
-  color: #555;
-  font-size: 1em;
-  font-weight: 700;
-  letter-spacing: normal;
-  text-transform: none;
-}
-.stacker.stacker-table table tbody tr:nth-child(odd) td {
-  background: transparent;
-}
-.stacker.stacker-table table tbody tr:nth-child(even) td {
-  background: #f8f8f8;
 }
 .stacker.stacker-table table th:first-child,
 .stacker.stacker-table table td:first-child {
