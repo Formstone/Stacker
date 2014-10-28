@@ -1,5 +1,5 @@
 /* 
- * Stacker v0.0.1 - 2014-10-27 
+ * Stacker v0.0.1 - 2014-10-28 
  * A jQuery plugin for responsive tables that retain column headers. Part of the Formstone Library. 
  * http://formstone.it/selecter/ 
  * 
@@ -106,12 +106,16 @@
 				tableContent += 'id="stacker-' + $table.attr("id") + '" ';
 			}
 			
-			tableContent += 'class="stacker stacker-table '+ opts.customClass + '">';
+			tableContent += 'class="stacker stacker-table '+ opts.customClass;
+			if (opts.preserveClasses) {
+				tableContent += ' '+ $table.attr("class");
+			}
+			tableContent += '">';
 			
 			// Preserve Caption
 			if ($tableCaption.length) {
 				tableContent += '<caption';
-				if (opts.preserveClasses) {
+				if (opts.preserveClasses && $tableCaption.attr("class")) {
 					tableContent += ' class="'+ $tableCaption.attr("class") +'"';
 				}
 				tableContent += '>' + $tableCaption.html() + '</caption>';
@@ -128,9 +132,17 @@
 				tableContent += '<tr><td><table>';
 				
 				// First row becomes table header
-				tableContent += '<thead><th>';
+				tableContent += '<thead><th';
+				if (opts.preserveClasses && $rowColumns.eq(0).attr("class")) {
+					tableContent += ' class="'+ $rowColumns.eq(0).attr("class") +'"';
+				}
+				tableContent += '>';
 				tableContent += labels[0];
-				tableContent += '</th><th>';
+				tableContent += '</th><th';
+				if (opts.preserveClasses && $rowColumns.eq(0).attr("class")) {
+					tableContent += ' class="'+ $rowColumns.eq(0).attr("class") +'"';
+				}
+				tableContent += '>';
 				tableContent += $rowColumns.eq(0).html();
 				tableContent += '</th></thead>';
 				
@@ -138,9 +150,17 @@
 				tableContent += '<tbody>';
 				
 				for (var j = 1, colCount = $rowColumns.length; j < colCount; j++) {
-					tableContent += '<tr><td>';
+					tableContent += '<tr><td';
+					if (opts.preserveClasses && $rowColumns.eq(j).attr("class")) {
+						tableContent += ' class="'+ $rowColumns.eq(j).attr("class") +'"';
+					}
+					tableContent += '>';
 					tableContent += labels[j];
-					tableContent += '</td><td>';
+					tableContent += '</td><td';
+					if (opts.preserveClasses && $rowColumns.eq(j).attr("class")) {
+						tableContent += ' class="'+ $rowColumns.eq(j).attr("class") +'"';
+					}
+					tableContent += '>';
 					tableContent += $rowColumns.eq(j).html();
 					tableContent += '</td></tr>';
 				}
