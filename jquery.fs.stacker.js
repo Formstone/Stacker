@@ -1,5 +1,5 @@
 /* 
- * Stacker v0.0.1 - 2014-10-28 
+ * Stacker v0.0.1 - 2014-11-25 
  * A jQuery plugin for responsive tables that retain column headers. Part of the Formstone Library. 
  * http://formstone.it/selecter/ 
  * 
@@ -39,9 +39,10 @@
 		 */
 		defaults: function(opts) {
 			options = $.extend(options, opts || {});
-			return $(this);
+
+			return (typeof this === 'object') ? $(this) : true;
 		},
-		
+
 		/**
 		 * @method
 		 * @name disable
@@ -109,10 +110,10 @@
 	 */
 	function _build($table, opts) {
 		if ($table.is("table")) {
-			
+
 			// EXTEND OPTIONS
 			opts = $.extend({}, opts, $table.data("stacker-options"));
-			
+
 			var labels = [],
 				$tableCaption = $table.find("caption"),
 				$tableHeader = $table.find("thead"),
@@ -120,8 +121,8 @@
 				$tableHeaderColumns = false,
 				$tableRows = $table.find("tbody > tr"),
 				index = 0;
-			
-			
+
+
 			if (!$tableHeader.length) {
 				// If no <thead> look for first row
 				$tableHeaderLabels = $tableRows.eq(0).find("td");
@@ -131,22 +132,22 @@
 				$tableHeaderColumns = $tableHeader.find("td");
 				$tableHeaderLabels = $tableHeaderColumns;
 			}
-			
+
 			$tableHeaderLabels.each(function(index) {
 				labels.push($(this).html());
 			});
-			
+
 			// Create new table
 			var $stackerTable,
 			    tableContent = '';
-				
+
 			tableContent += '<table ';
-			
+
 			// Amend id
 			if ($table.attr("id")) {
 				tableContent += 'id="stacker-' + $table.attr("id") + '" ';
 			}
-			
+
 			tableContent += 'class="stacker stacker-table';
 			if (opts.customClass) {
 				tableContent += ' ' + opts.customClass;
@@ -155,7 +156,7 @@
 				tableContent += ' '+ $table.attr("class");
 			}
 			tableContent += '">';
-			
+
 			// Preserve Caption
 			if ($tableCaption.length) {
 				tableContent += '<caption';
@@ -164,17 +165,17 @@
 				}
 				tableContent += '>' + $tableCaption.html() + '</caption>';
 			}
-			
+
 			tableContent += '<tbody>';
-			
+
 			// Rows
 			for (var i = index, rowCount = $tableRows.length; i < rowCount; i++) {
-				
+
 				var $row        = $tableRows.eq(i),
 				    $rowColumns = $row.find("td");
-				
+
 				tableContent += '<tr><td><table>';
-				
+
 				// First row becomes table header
 				tableContent += '<thead>';
 
@@ -194,7 +195,7 @@
 					tableContent += labels[0];
 					tableContent += '</th>';
 				}
-				
+
 				// Draw row contents
 				tableContent += '<th';
 				if (!firstLabelExists) {
@@ -206,19 +207,19 @@
 				tableContent += '>';
 				tableContent += $rowColumns.eq(0).html();
 				tableContent += '</th></thead>';
-				
+
 				// Begin table body with remaining rows
 				tableContent += '<tbody>';
-				
+
 				for (var j = 1, colCount = $rowColumns.length; j < colCount; j++) {
 					tableContent += '<tr>';
-					
+
 					// Check if label exists
 					var labelExists = false;
 					if (labels[j] && labels[j] !== "") {
 						labelExists = true;
 					}
-					
+
 					// Draw label column if exists
 					if (labelExists) {
 						tableContent += '<td';
@@ -229,7 +230,7 @@
 						tableContent += labels[j];
 						tableContent += '</td>';
 					}
-					
+
 					tableContent += '<td';
 					if (!labelExists) {
 						tableContent += ' colspan="2"';
@@ -241,25 +242,25 @@
 					tableContent += $rowColumns.eq(j).html();
 					tableContent += '</td></tr>';
 				}
-				
+
 				tableContent += '</tbody></table></td></tr>';
 			}
 			tableContent += '</tbody></table>';
-			
+
 			$stackerTable = $(tableContent);
-			
+
 			// Modify DOM
 			$table.addClass("stacker stacker-original")
 			      .after($stackerTable);
-			
+
 			// Save data
 			var data = $.extend(true, {
 				$table: $table,
 				$stackerTable: $stackerTable
 			}, opts);
-			
+
 			data.$table.data("stacker", data);
-			
+
 			// Navtive MQ Support
 			if (window.matchMedia !== undefined) {
 				data.mediaQuery = window.matchMedia("(max-width:" + (data.maxWidth === Infinity ? "100000px" : data.maxWidth) + ")");
@@ -271,7 +272,7 @@
 			}
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onRespond
