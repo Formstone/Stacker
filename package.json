@@ -15,10 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Formstone/Stacker"
+    "url": "https://github.com/FormstoneClassic/Stacker"
   },
-  "homepage": "http://formstone.it/selecter/",
-  "demo": "http://formstone.it/components/Stacker/demo/index.html",
+  "homepage": "http://classic.formstone.it/selecter/",
+  "demo": "http://classic.formstone.it/components/Stacker/demo/index.html",
   "license": "MIT",
   "author": {
     "name": "Matt Hisamoto",

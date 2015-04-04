@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A jQuery plugin for responsive tables that retain column headers. Part of the Formstone Library.",
   "license": "MIT",
-  "homepage": "http://formstone.it/selecter/",
+  "homepage": "http://classic.formstone.it/selecter/",
   "author": {
     "name": "Matt Hisamoto",
     "email": "mwhisamoto@gmail.com"

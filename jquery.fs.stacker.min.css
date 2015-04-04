@@ -1,9 +1,9 @@
 /* 
- * Stacker v0.0.1 - 2014-11-25 
+ * Stacker v0.0.1 - 2015-04-04 
  * A jQuery plugin for responsive tables that retain column headers. Part of the Formstone Library. 
- * http://formstone.it/selecter/ 
+ * http://classic.formstone.it/selecter/ 
  * 
- * Copyright 2014 Matt Hisamoto; MIT Licensed 
+ * Copyright 2015 Matt Hisamoto; MIT Licensed 
  */
 
 .stacker.stacker-table{display:none}.stacker.stacker-table.enabled{display:table}.stacker.stacker-table,.stacker.stacker-table table{width:100%;min-width:0;table-layout:fixed}.stacker.stacker-table,.stacker.stacker-table tr,.stacker.stacker-table th,.stacker.stacker-table td{background:0 0;padding:0;margin:0}.stacker.stacker-table table tr,.stacker.stacker-table table th,.stacker.stacker-table table td{padding:1em}.stacker.stacker-table table th:first-child,.stacker.stacker-table table td:first-child{text-align:right}.stacker.stacker-table table th:last-child,.stacker.stacker-table table td:last-child{text-align:left}.stacker.stacker-table table th:first-child:last-child,.stacker.stacker-table table td:first-child:last-child{text-align:center}.stacker.stacker-original{display:none}.stacker.stacker-original.enabled{display:table}
